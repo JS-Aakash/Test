@@ -1,0 +1,104 @@
+diff --git a/index.js b/index.js
+old mode 100755
+new mode 100644
+index e1ddd0b..fd38bd2
+--- a/index.js
++++ b/index.js
+@@ -1,9 +1,17 @@
++/**
++ * Arithmetic module for basic operations.
++ */
++
+ function add(a, b) {
+-    return a - b;
++    return a + b;
++}
++
++function multiply(a, b) {
++    return a * b;
+ }
+ 
+ function greet(name) {
+     return "Hello " + name;
+ }
+ 
+-module.exports = { add, greet };
++module.exports = { add, multiply, greet };
+
+diff --git a/test.js b/test.js
+new file mode 100644
+index 0000000..0000000
+--- /dev/null
++++ b/test.js
+@@ -0,0 +1,57 @@
++const assert = require('assert');
++const { add, multiply, greet } = require('./index');
++
++console.log('Running tests...');
++
++// Test add function
++try {
++    assert.strictEqual(add(5, 2), 7);
++    console.log('✅ add test passed');
++} catch (e) {
++    console.error('❌ add test failed:', e.message);
++    process.exit(1);
++}
++
++// Test multiply function
++try {
++    assert.strictEqual(multiply(5, 2), 10);
++    console.log('✅ multiply test passed');
++} catch (e) {
++    console.error('❌ multiply test failed:', e.message);
++    process.exit(1);
++}
++
++// Test greet function
++try {
++    assert.strictEqual(greet("John"), "Hello John");
++    console.log('✅ greet test passed');
++} catch (e) {
++    console.error('❌ greet test failed:', e.message);
++    process.exit(1);
++}
++
++// Test edge cases for add function
++try {
++    assert.strictEqual(add(-5, 2), -3);
++    assert.strictEqual(add(5, -2), 3);
++    assert.strictEqual(add(0, 0), 0);
++    console.log('✅ add edge cases test passed');
++} catch (e) {
++    console.error('❌ add edge cases test failed:', e.message);
++    process.exit(1);
++}
++
++// Test edge cases for multiply function
++try {
++    assert.strictEqual(multiply(-5, 2), -10);
++    assert.strictEqual(multiply(5, -2), -10);
++    assert.strictEqual(multiply(0, 2), 0);
++    assert.strictEqual(multiply(0, 0), 0);
++    console.log('✅ multiply edge cases test passed');
++} catch (e) {
++    console.error('❌ multiply edge cases test failed:', e.message);
++    process.exit(1);
++}
++
++console.log('All tests passed!');
++
+
+diff --git a/package.json b/package.json
+old mode 100755
+new mode 100644
+index ab7f2de..203cee7
+--- a/package.json
++++ b/package.json
+@@ -1,5 +1,5 @@
+ {
+-    "name": "test-repo",
++    "name": "arithmetic-module",
+     "version": "1.0.0",
+     "scripts": {
+         "test": "node test.js"
