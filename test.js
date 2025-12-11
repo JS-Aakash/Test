@@ -1,5 +1,5 @@
 const assert = require('assert');
-const { add, greet } = require('./index');
+const { add, greet, multiply } = require('./index');
 
 console.log('Running tests...');
 
@@ -16,5 +16,13 @@ try {
     console.log('✅ greet passed');
 } catch (e) {
     console.error('❌ greet failed:', e.message);
+    process.exit(1);
+}
+
+try {
+    assert.strictEqual(multiply(2, 3), 6, 'multiply(2, 3) should be 6');
+    console.log('✅ multiply passed');
+} catch (e) {
+    console.error('❌ multiply failed:', e.message);
     process.exit(1);
 }

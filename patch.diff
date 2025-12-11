@@ -1,0 +1,69 @@
+diff --git a/index.js b/index.js
+old mode 100755
+new mode 100644
+index e1ddd0b..d5e0720
+--- a/index.js
++++ b/index.js
+@@ -1,9 +1,33 @@
++/**
++ * Function to add two numbers.
++ *
++ * @param {number} a The first number.
++ * @param {number} b The second number.
++ * @returns {number} The sum of a and b.
++ */
+ function add(a, b) {
+-    return a - b;
++    return a + b;
+ }
+ 
++/**
++ * Function to greet someone.
++ *
++ * @param {string} name The person's name to greet.
++ * @returns {string} A greeting message.
++ */
+ function greet(name) {
+-    return "Hello " + name;
++    return `Hello ${name}`;
+ }
+ 
+-module.exports = { add, greet };
++/**
++ * Function to multiply two numbers.
++ *
++ * @param {number} a The first number.
++ * @param {number} b The second number.
++ * @returns {number} The product of a and b.
++ */
++function multiply(a, b) {
++    return a * b;
++}
++
++module.exports = { add, greet, multiply };
+
+diff --git a/test.js b/test.js
+old mode 100755
+new mode 100644
+index 82c9c6b..a87e09a
+--- a/test.js
++++ b/test.js
+@@ -1,5 +1,5 @@
+ const assert = require('assert');
+-const { add, greet } = require('./index');
++const { add, greet, multiply } = require('./index');
+ 
+ console.log('Running tests...');
+ 
+@@ -18,3 +18,11 @@ try {
+     console.error('❌ greet failed:', e.message);
+     process.exit(1);
+ }
++
++try {
++    assert.strictEqual(multiply(2, 3), 6, 'multiply(2, 3) should be 6');
++    console.log('✅ multiply passed');
++} catch (e) {
++    console.error('❌ multiply failed:', e.message);
++    process.exit(1);
++}
