@@ -1,0 +1,37 @@
+diff --git a/index.js b/index.js
+index b251d9c..26add6b 100644
+--- a/index.js
++++ b/index.js
+@@ -1,9 +1,9 @@
+ function add(a, b) {
+-    return a - b;
++    return a + b;
+ }
+ 
+-function greet(name) {
+-    return "Hello " + name;
++function multiply(a, b) {
++    return a * b;
+ }
+ 
+-module.exports = { add, greet };
++module.exports = { add, multiply };
+\ No newline at end of file
+
+diff --git a/test.js b/test.js
+new file mode 100644
+index 0000000..0000000
+--- /dev/null
++++ b/test.js
+@@ -0,0 +1,11 @@
++const assert = require('assert');
++const { add, multiply } = require('./index');
++
++try {
++    assert.strictEqual(add(2, 3), 5);
++    assert.strictEqual(multiply(2, 3), 6);
++    console.log('✅ test passed');
++} catch (e) {
++    console.error('❌ test failed:', e.message);
++    process.exit(1);
++}
