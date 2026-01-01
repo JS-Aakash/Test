@@ -1,16 +1,15 @@
-# DeployOps Fullstack Demo
+# TaskFlow Pro
 
-This repository is a demo full-stack application designed to test
-the **DeployOps Project Execution** feature.
+A full-stack task management application built for demonstrating
+DeployOps Project Execution and AI Auto-Fix.
 
-## Features
-- Express backend
-- Static frontend
-- Single Docker container
-- No database
-- Simple API endpoint
+## Known Issues (For AI Fix)
+- Error middleware is broken
+- Task validation missing
+- Task persistence is incorrect
+- Stats calculation logic is flawed
 
 ## Run Locally
 ```bash
-docker build -t deployops-demo .
-docker run -p 3000:3000 deployops-demo
+docker build -t taskflow .
+docker run -p 3000:3000 taskflow

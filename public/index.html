@@ -1,17 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8" />
-  <title>DeployOps Fullstack Demo</title>
-  <link rel="stylesheet" href="style.css" />
+  <title>TaskFlow Pro</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <h1>🚀 DeployOps Fullstack Demo</h1>
-  <p>This app is running inside a Docker container.</p>
+  <h1>🧠 TaskFlow Pro</h1>
 
-  <button id="check">Check API Health</button>
-  <pre id="output"></pre>
+  <input id="taskInput" placeholder="New task..." />
+  <button onclick="addTask()">Add Task</button>
 
-  <script src="script.js"></script>
+  <h3>Tasks</h3>
+  <ul id="tasks"></ul>
+
+  <h3>Stats</h3>
+  <pre id="stats"></pre>
+
+  <script src="app.js"></script>
 </body>
 </html>
