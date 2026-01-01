@@ -8,15 +8,21 @@ const app = express();
 const PORT = 3000;
 
 app.use(express.json());
+
+// Serve static frontend
 app.use(express.static(path.join(__dirname, "../public")));
 
 app.use("/api/tasks", taskRoutes);
 app.use("/api/stats", statsRoutes);
 
-app.use((err, req, res) => {
+// Handle favicon
+app.get("/favicon.ico", (req, res) => res.status(204).end());
+
+app.use((err, req, res, next) => {
+  console.error(err);
   res.status(500).json({ error: err.message });
 });
 
 app.listen(PORT, () => {
-  console.log(`TaskFlow Pro running at http://localhost:${PORT}`);
+  console.log(`Server running at http://localhost:${PORT}`);
 });
