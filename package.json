@@ -1,0 +1,12 @@
+{
+  "name": "Test",
+  "version": "1.0.0",
+  "description": "Demo fullstack app for DeployOps execution testing",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
