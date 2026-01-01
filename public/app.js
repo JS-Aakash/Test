@@ -2,25 +2,34 @@ async function loadTasks() {
   const res = await fetch("/api/tasks");
   const tasks = await res.json();
 
-  const ul = document.getElementById("tasks");
-  ul.innerHTML = "";
+  const list = document.getElementById("taskList");
+  list.innerHTML = "";
 
-  tasks.forEach(t => {
+  tasks.forEach(task => {
     const li = document.createElement("li");
-    li.textContent = t.title;
-    ul.appendChild(li);
+
+    li.innerHTML = `
+      <span>${task.title}</span>
+      <span class="status ${task.done ? "done" : "pending"}">
+        ${task.done ? "Done" : "Pending"}
+      </span>
+    `;
+
+    list.appendChild(li);
   });
 }
 
 async function loadStats() {
   const res = await fetch("/api/stats");
-  const stats = await res.json();
-  document.getElementById("stats").textContent =
-    JSON.stringify(stats, null, 2);
+  const { total, completed } = await res.json();
+
+  document.getElementById("total").textContent = total;
+  document.getElementById("completed").textContent = completed;
 }
 
 async function addTask() {
-  const title = document.getElementById("taskInput").value;
+  const input = document.getElementById("taskInput");
+  const title = input.value;
 
   await fetch("/api/tasks", {
     method: "POST",
@@ -28,6 +37,7 @@ async function addTask() {
     body: JSON.stringify({ title })
   });
 
+  input.value = "";
   loadTasks();
   loadStats();
 }

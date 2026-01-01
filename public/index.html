@@ -1,20 +1,50 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8" />
   <title>TaskFlow Pro</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <h1>🧠 TaskFlow Pro</h1>
+  <div class="app">
+    <aside class="sidebar">
+      <h2>🚀 TaskFlow</h2>
+      <nav>
+        <a class="active">Dashboard</a>
+        <a>Tasks</a>
+        <a>Stats</a>
+      </nav>
+    </aside>
 
-  <input id="taskInput" placeholder="New task..." />
-  <button onclick="addTask()">Add Task</button>
+    <main class="main">
+      <header class="header">
+        <h1>Project Dashboard</h1>
+        <span class="badge">Live</span>
+      </header>
 
-  <h3>Tasks</h3>
-  <ul id="tasks"></ul>
+      <section class="stats">
+        <div class="card">
+          <h3>Total Tasks</h3>
+          <p id="total">—</p>
+        </div>
+        <div class="card">
+          <h3>Completed</h3>
+          <p id="completed">—</p>
+        </div>
+      </section>
 
-  <h3>Stats</h3>
-  <pre id="stats"></pre>
+      <section class="tasks">
+        <h2>Tasks</h2>
+
+        <div class="add-task">
+          <input id="taskInput" placeholder="Add a new task..." />
+          <button onclick="addTask()">Add</button>
+        </div>
+
+        <ul id="taskList"></ul>
+      </section>
+    </main>
+  </div>
 
   <script src="app.js"></script>
 </body>
