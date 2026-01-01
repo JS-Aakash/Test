@@ -1,8 +1,8 @@
-const express = require("express");
+const express = require('express');
 const router = express.Router();
-const taskService = require("../services/taskService");
+const taskService = require('../services/taskService');
 
-router.get("/", (req, res) => {
+router.get('/', (req, res) => {
   const tasks = taskService.getTasks();
 
   const completed = tasks.filter(t => t.done === true).length;

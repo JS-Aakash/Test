@@ -1,7 +1,7 @@
-const fs = require("fs");
-const path = require("path");
+const fs = require('fs');
+const path = require('path');
 
-const dataPath = path.join(__dirname, "../data/tasks.json");
+const dataPath = path.join(__dirname, '../data/tasks.json');
 
 function getTasks() {
   const raw = fs.readFileSync(dataPath);
